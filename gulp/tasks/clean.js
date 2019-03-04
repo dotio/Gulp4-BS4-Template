@@ -1,6 +1,6 @@
-'use strict';
-module.exports = function() {
-	$.gulp.task('clean', function() {
+/* global $ */
+module.exports = () => {
+	$.gulp.task('clean', () => {
 		return $.del('./build');
 	});
 };

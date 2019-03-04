@@ -1,6 +1,7 @@
-"use strict";
-
-//vars
+/* global $ */
+/* eslint-disable global-require */
+/* eslint-disable require */
+// vars
 global.$ = {
   gulp: require("gulp"),
   gp: require("gulp-load-plugins")(),
@@ -16,12 +17,12 @@ global.$ = {
   }
 };
 
-//path to tasks
-$.path.tasks.forEach(function(taskPath) {
+// path to tasks
+$.path.tasks.forEach((taskPath) => {
   require(taskPath)();
 });
 
-//dev
+// dev
 $.gulp.task(
   "dev",
   $.gulp.series(
@@ -39,7 +40,7 @@ $.gulp.task(
 
 $.gulp.task("sprite", $.gulp.series("clean", $.gulp.parallel("sprite:svg")));
 
-//build
+// build
 $.gulp.task(
   "build",
   $.gulp.series(
@@ -57,5 +58,5 @@ $.gulp.task(
   )
 );
 
-//default
+// default
 $.gulp.task("default", $.gulp.series("dev", $.gulp.parallel("watch", "serve")));

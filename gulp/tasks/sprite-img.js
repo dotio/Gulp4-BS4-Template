@@ -1,7 +1,7 @@
-"use strict";
-module.exports = function() {
-  $.gulp.task("sprite:png", function() {
-    var spriteData = $.gulp.src("./source/img/pngSprite/**/*.png").pipe(
+/* global $ */
+module.exports = () => {
+  $.gulp.task("sprite:png", () => {
+    const spriteData = $.gulp.src("./source/img/pngSprite/**/*.png").pipe(
       $.gp.spritesmith({
         imgName: "sprite.png",
         cssName: "sprite.scss",
@@ -11,14 +11,14 @@ module.exports = function() {
       })
     );
 
-    var imaStream = spriteData.img.pipe($.gulp.dest("./source/img/pngSprite"));
-    var cssStream = spriteData.css.pipe($.gulp.dest("./dev/img/pngSprite"));
+    const imaStream = spriteData.img.pipe($.gulp.dest("./source/img/pngSprite"));
+    const cssStream = spriteData.css.pipe($.gulp.dest("./dev/img/pngSprite"));
 
     return $.merge(imaStream, cssStream);
   });
 
-  $.gulp.task("sprite:png-build", function() {
-    var spriteData = $.gulp.src("./source/img/pngSprite/**/*.png").pipe(
+  $.gulp.task("sprite:png-build", () => {
+    const spriteData = $.gulp.src("./source/img/pngSprite/**/*.png").pipe(
       $.gp.spritesmith({
         imgName: "sprite.png",
         cssName: "sprite.scss",
@@ -28,9 +28,9 @@ module.exports = function() {
       })
     );
 
-    var imaStream = spriteData.img.pipe($.gulp.dest("./source/img/pngSprite"));
+    const imaStream = spriteData.img.pipe($.gulp.dest("./source/img/pngSprite"));
 
-    var cssStream = spriteData.css.pipe($.gulp.dest("./build/img/pngSprite"));
+    const cssStream = spriteData.css.pipe($.gulp.dest("./build/img/pngSprite"));
 
     return $.merge(imaStream, cssStream);
   });

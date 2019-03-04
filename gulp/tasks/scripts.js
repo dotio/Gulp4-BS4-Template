@@ -1,16 +1,18 @@
-"use strict";
-module.exports = function() {
-  $.gulp.task("js:copy", function() {
+/* global $ */
+module.exports = () => {
+  $.gulp.task("js:copy", () => {
     return $.gulp
       .src("./source/js/**/*.js")
       .pipe($.gulp.dest("./dev/js/"))
       .pipe($.browserSync.stream());
   });
 
-  $.gulp.task("js:build", function() {
+  $.gulp.task("js:build", () => {
     return $.gulp
       .src("./source/js/**/*.js")
-      .pipe($.gp.babel({presets:['@babel/env']}))
+      .pipe($.gp.babel({
+        presets: ['@babel/env']
+      }))
       .pipe($.gp.uglify())
       .pipe($.gp.concat("bundle.min.js"))
       .pipe($.gulp.dest("./build/js/"))

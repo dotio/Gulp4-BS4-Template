@@ -1,6 +1,6 @@
-"use strict";
-module.exports = function() {
-  $.gulp.task("style:copy", function() {
+/* global $ */
+module.exports = () => {
+  $.gulp.task("style:copy", () => {
     return $.gulp
       .src("./source/css/style.scss")
       .pipe($.gp.plumber())
@@ -9,7 +9,7 @@ module.exports = function() {
       .pipe($.gp.sass())
       .on(
         "error",
-        $.gp.notify.onError(function(error) {
+        $.gp.notify.onError((error) => {
           return {
             title: "Scss",
             message: error.message
@@ -26,10 +26,12 @@ module.exports = function() {
 
       .pipe($.gp.sourcemaps.write())
       .pipe($.gulp.dest("./dev/css/"))
-      .pipe($.browserSync.reload({ stream: true }));
+      .pipe($.browserSync.reload({
+        stream: true
+      }));
   });
 
-  $.gulp.task("style:build", function() {
+  $.gulp.task("style:build", () => {
     return $.gulp
       .src("./source/css/style.scss")
       .pipe($.gp.plumber())

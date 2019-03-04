@@ -1,4 +1,5 @@
-module.exports = function() {
+/* global $ */
+module.exports = () => {
   $.gulp.task("sprite:svg", () => {
     return $.gulp
       .src("./source/svg/**/*.svg")
@@ -11,12 +12,14 @@ module.exports = function() {
       )
       .pipe(
         $.gp.cheerio({
-          run: function($) {
+          run: ($) => {
             $("[fill]").removeAttr("fill");
             $("[stroke]").removeAttr("stroke");
             $("[style]").removeAttr("style");
           },
-          parserOptions: { xmlMode: true }
+          parserOptions: {
+            xmlMode: true
+          }
         })
       )
       .pipe($.gp.replace("&gt;", ">"))
@@ -44,12 +47,14 @@ module.exports = function() {
       )
       .pipe(
         $.gp.cheerio({
-          run: function($) {
+          run: ($) => {
             $("[fill]").removeAttr("fill");
             $("[stroke]").removeAttr("stroke");
             $("[style]").removeAttr("style");
           },
-          parserOptions: { xmlMode: true }
+          parserOptions: {
+            xmlMode: true
+          }
         })
       )
       .pipe($.gp.replace("&gt;", ">"))

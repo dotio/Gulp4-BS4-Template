@@ -1,10 +1,10 @@
-"use strict";
-module.exports = function() {
-  $.gulp.task("font:copy", function() {
+/* global $ */
+module.exports = () => {
+  $.gulp.task("font:copy", () => {
     return $.gulp.src("./source/font/**/*.*").pipe($.gulp.dest("./dev/font/"));
   });
 
-  $.gulp.task("font:build", function() {
+  $.gulp.task("font:build", () => {
     return $.gulp
       .src("./source/font/**/*.* ")
       .pipe($.gp.fontmin())
