@@ -12,21 +12,9 @@
 
 body {
   font-size: 16px;
-  
-  background-color: $text_black;
+  background-color: #333;
   color: #fff;
   overflow-x: hidden;
   line-height: 1.4;
   font-family: $akrobat;
 }
-
-.container {
-  @include container();
-}
-
-.py-1{
-  padding: 1.5rem 0;
-}
-
-
-
