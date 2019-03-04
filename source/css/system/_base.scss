@@ -1,0 +1,32 @@
+@import "./mixin";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+body {
+  font-size: 16px;
+  
+  background-color: $text_black;
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.4;
+  font-family: $akrobat;
+}
+
+.container {
+  @include container();
+}
+
+.py-1{
+  padding: 1.5rem 0;
+}
+
+
+
