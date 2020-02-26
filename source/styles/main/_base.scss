@@ -1,5 +1,4 @@
-@import "./mixin";
-
+@import './mixin';
 
 * {
   margin: 0;
@@ -9,12 +8,11 @@
   text-decoration: none;
 }
 
-
 body {
   font-size: 16px;
   background-color: #333;
   color: #fff;
   overflow-x: hidden;
   line-height: 1.4;
-  font-family: $akrobat;
+  font-family: $roboto;
 }

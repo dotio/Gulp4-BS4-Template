@@ -3,60 +3,64 @@
 /* eslint-disable require */
 // vars
 global.$ = {
-  gulp: require("gulp"),
-  gp: require("gulp-load-plugins")(),
-  browserSync: require("browser-sync").create(),
-  del: require("del"),
-  cssunit: require("gulp-css-unit"),
-  sassGlob: require("gulp-sass-glob"),
-  cleanCSS: require("gulp-clean-css"),
-  package: require("./package.json"),
-  merge: require("merge-stream"),
+  gulp: require('gulp'),
+  gp: require('gulp-load-plugins')(),
+  browserSync: require('browser-sync').create(),
+  del: require('del'),
+  cssunit: require('gulp-css-unit'),
+  sassGlob: require('gulp-sass-glob'),
+  cleanCSS: require('gulp-clean-css'),
+  package: require('./package.json'),
+  merge: require('merge-stream'),
   path: {
-    tasks: require("./gulp/config/tasks.js")
+    tasks: require('./gulp/config/tasks.js')
   }
 };
 
 // path to tasks
-$.path.tasks.forEach((taskPath) => {
+$.path.tasks.forEach(taskPath => {
   require(taskPath)();
 });
 
 // dev
 $.gulp.task(
-  "dev",
+  'dev',
   $.gulp.series(
     $.gulp.parallel(
-      "style:copy",
-      "pug:copy",
-      "js:copy",
-      "img:copy",
-      "font:copy",
-      "module:copy",
-      "favicon:copy"
+      'style:copy',
+      'pug:copy',
+      'js:copy',
+      'img:copy',
+      'font:copy',
+      'module:copy',
+      'favicon:copy',
+      'watch',
+      'serve'
     )
   )
 );
 
-$.gulp.task("sprite", $.gulp.series("clean", $.gulp.parallel("sprite:svg")));
+$.gulp.task('sprite', $.gulp.series('clean', $.gulp.parallel('sprite:svg')));
 
 // build
 $.gulp.task(
-  "build",
+  'build',
   $.gulp.series(
-    "clean",
+    'clean',
     $.gulp.parallel(
-      "style:build",
-      "pug:build",
-      "js:build",
-      "sprite:svg-build",
-      "img:build",
-      "font:build",
-      "module:build",
-      "favicon:build"
+      'style:build',
+      'pug:build',
+      'js:build',
+      'sprite:svg-build',
+      'img:build',
+      'font:build',
+      'module:build',
+      'favicon:build',
+      'watch',
+      'serve'
     )
   )
 );
 
 // default
-$.gulp.task("default", $.gulp.series("dev", $.gulp.parallel("watch", "serve")));
+$.gulp.task('default', $.gulp.series('dev', $.gulp.parallel('watch', 'serve')));
